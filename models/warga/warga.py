@@ -1,7 +1,10 @@
 from uuid import uuid4
+from common.database import Database
 
 
 class Warga:
+    collection = 'warga'
+
     def __init__(self, nama_depan, nama_belakang, nik, alamat_ktp, blok_ppn, no_ppn, email, tempat_lahir,
                  tanggal_lahir, no_hp, agama, pekerjaan, password, jumlah_penghuni, rincian_penghuni=None, _id=None,
                  aktif=None):
@@ -30,3 +33,9 @@ class Warga:
                 "agama": self.agama, "pekerjaan": self.pekerjaan, "password": self.password,
                 "jumlah_penghuni": self.jumlah_penghuni, "rincian_penghuni": self.rincian_penghuni, "_id": self._id,
                 "aktif": self.aktif}
+
+    def save_one_to_db(self):
+        Database.insert_one(Warga.collection, self.json())
+
+    def find_one_warga_from_db(self):
+        return Database.find_one(Warga.collection, {"blok_ppn": self.blok_ppn, "no_ppn": self.no_ppn})

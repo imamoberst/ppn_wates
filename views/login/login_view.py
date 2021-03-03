@@ -32,6 +32,12 @@ def register_warga():
         rincian_penghuni = json.loads(request.form['datakel'])
         warga_obj = Warga(nama_depan, nama_belakang, nik, alamat_ktp, blok_ppn, no_ppn, email, tempat_lahir,
                           tanggal_lahir, no_hp, agama, pekerjaan, password, jumlah_penghuni, rincian_penghuni)
-        print(warga_obj.json())
-        return request.form
+        cari_warga_ppn = warga_obj.find_one_warga_from_db()
+        if cari_warga_ppn is None:
+            warga_obj.save_one_to_db()
+            messsage_succes = "Berhasil Mendaftar Dan Akan Di Verifikasi Oleh Petugas Terkait"
+            return render_template('login/register.html', messsage_succes=messsage_succes)
+        else:
+            messsage_error = f"No Rumah {cari_warga_ppn['blok_ppn']}{cari_warga_ppn['no_ppn']} di PPN sudah terdaftar atas nama {cari_warga_ppn['nama_depan']} {cari_warga_ppn['nama_belakang']}"
+            return render_template('login/register.html', messsage_error=messsage_error)
     return render_template('login/register.html')
