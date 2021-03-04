@@ -41,3 +41,8 @@ def register_warga():
             messsage_error = f"No Rumah {cari_warga_ppn['blok_ppn']}{cari_warga_ppn['no_ppn']} di PPN sudah terdaftar atas nama {cari_warga_ppn['nama_depan']} {cari_warga_ppn['nama_belakang']}"
             return render_template('login/register.html', messsage_error=messsage_error, data=request.form)
     return render_template('login/register.html')
+
+
+@login_view.route('/logout')
+def logout():
+    return 'logout'
