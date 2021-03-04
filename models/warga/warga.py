@@ -7,7 +7,7 @@ class Warga:
 
     def __init__(self, nama_depan, nama_belakang, nik, alamat_ktp, blok_ppn, no_ppn, email, tempat_lahir,
                  tanggal_lahir, no_hp, agama, pekerjaan, password, jumlah_penghuni, rincian_penghuni=None, _id=None,
-                 aktif=None):
+                 aktif=None, level=None):
         self.nama_depan = nama_depan
         self.nama_belakang = nama_belakang
         self.nik = nik
@@ -24,6 +24,7 @@ class Warga:
         self.jumlah_penghuni = jumlah_penghuni
         self.rincian_penghuni = rincian_penghuni or []
         self._id = _id or uuid4().hex
+        self.level = level or 'warga'
         self.aktif = aktif or False
 
     def json(self):
@@ -32,7 +33,7 @@ class Warga:
                 "tempat_lahir": self.tempat_lahir, "tanggal_lahir": self.tanggal_lahir, "no_hp": self.no_hp,
                 "agama": self.agama, "pekerjaan": self.pekerjaan, "password": self.password,
                 "jumlah_penghuni": self.jumlah_penghuni, "rincian_penghuni": self.rincian_penghuni, "_id": self._id,
-                "aktif": self.aktif}
+                "aktif": self.aktif, "level": self.level}
 
     def save_one_to_db(self):
         Database.insert_one(Warga.collection, self.json())

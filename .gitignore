@@ -5,4 +5,6 @@ views/login/__pycache__/login_view.cpython-37.pyc
 models/__pycache__/
 models/warga/__pycache__/
 common/__pycache__/
+views/home/__pycache__/
+
 
