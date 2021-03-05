@@ -5,9 +5,9 @@ konfirmasi_view = Blueprint('konfirmasi_view', __name__)
 
 @konfirmasi_view.route('/iuranbulanan')
 def iuran_bulanan():
-    return render_template('layanan/konfirmasi.html')
+    return render_template('konfirmasi/iuranbulanan.html')
 
 
 @konfirmasi_view.route('/iurankas')
 def iurankas():
-    return render_template('layanan/iurankas.html')
+    return render_template('konfirmasi/iurankas.html')

@@ -1,0 +1,41 @@
+{% extends 'base_home.html' %}
+{% block content %}
+    <h1 class="h3 mb-4 text-gray-800">Konfirmasi Kas Bulanan</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Input Informasi Pembayaran</h6>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Pembayaran</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="namapembayar">Nama Pembayar / Nama Rekening </label>
+                        <input type="text" class="form-control" id="namapembayar" name="namapembayar">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Nama Bank</label>
+                        <input type="password" class="form-control" id="inputPassword4">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Tanggal Pembayaran</label>
+                        <input type="password" class="form-control" id="inputPassword4">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Catatan</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Konfirmasi</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
