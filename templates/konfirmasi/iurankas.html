@@ -1,4 +1,7 @@
 {% extends 'base_home.html' %}
+{% block head %}
+    <link href="{{ url_for('static',filename='css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+{% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">Konfirmasi Kas Bulanan</h1>
     <div class="card shadow mb-4">
@@ -8,34 +11,118 @@
         <div class="card-body">
             <form>
                 <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputState">Pembayaran</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
+                    <div class="form-group col-md-2">
+                        <label for="inputState">Tahun Pembayaran</label>
+                        <input type="text" class="form-control datepickeryear" id="tahunbayar"
+                               name="tahunbayar" required>
                     </div>
                 </div>
+                <hr>
+                <label for="inputState">Bulan Pembayaran</label>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">Januari</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">Febuari</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">Maret</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">April</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">Mei</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">Juni</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">Juli</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">Agustus</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">September</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">Oktober</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">November</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">Desember</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="namapembayar">Nama Pembayar / Nama Rekening </label>
+                        <label for="namapembayar">Nama Rekening </label>
                         <input type="text" class="form-control" id="namapembayar" name="namapembayar">
                     </div>
+
                     <div class="form-group col-md-4">
-                        <label for="inputPassword4">Nama Bank</label>
-                        <input type="password" class="form-control" id="inputPassword4">
+                        <label for="tanggalbayar">Tanggal Pembayaran</label>
+                        <input type="text" class="form-control tanggalbayar" id="tanggalbayar" name="tanggalbayar">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputPassword4">Tanggal Pembayaran</label>
-                        <input type="password" class="form-control" id="inputPassword4">
+                    <div class="form-group col">
+                        <label for="tanggalbayar">Upload Bukti Transfer</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Catatan</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="catatan">Catatan</label>
+                    <textarea class="form-control" id="catatan" rows="3" name="catatan"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Konfirmasi</button>
             </form>
         </div>
     </div>
+{% endblock %}
+{% block script %}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".datepickeryear").datepicker({
+                format: " yyyy",
+                orientation: 'bottom',
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            }).on('changeDate', function (ev) {
+                //my work herec
+                console.log('tahun di klik')
+            });
+        });
+        $(function () {
+            $(".tanggalbayar").datepicker({
+                format: 'yyyy-mm-dd',
+                orientation: 'bottom',
+                startDate: '1940-01-01',
+                autoclose: true
+            });
+        });
+    </script>
+    <script src="{{ url_for('static',filename='js/iuranbulanan.js') }}"></script>
 {% endblock %}

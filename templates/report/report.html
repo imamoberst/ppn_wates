@@ -1,0 +1,276 @@
+{% extends 'base_home.html' %}
+{% block head %}
+    <link href="{{ url_for('static',filename='css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1 class="h3 mb-4 text-gray-800">Report</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Report Iuran Bulanan</h6>
+        </div>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <select id="blokppn" class="form-control" name="blokppn" required>
+                        {% if data %}
+                            <option value="{{ data.blokppn }}" selected>{{ data.blokppn }}</option>
+                        {% endif %}
+                        <option value="">Blok Rumah</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="J">J</option>
+                        <option value="K">K</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="text" class="form-control datepickeryear" id="datepickeryear"
+                           name="datepickeryear" required>
+                </div>
+            </div>
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">No Rumah</th>
+                    <th scope="col">Januari</th>
+                    <th scope="col">Febuari</th>
+                    <th scope="col">Maret</th>
+                    <th scope="col">April</th>
+                    <th scope="col">Mei</th>
+                    <th scope="col">Juni</th>
+                    <th scope="col">Juli</th>
+                    <th scope="col">Agustus</th>
+                    <th scope="col">September</th>
+                    <th scope="col">Oktober</th>
+                    <th scope="col">November</th>
+                    <th scope="col">Desember</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>E5 - Imam Taufik</td>
+                    <td style="text-align: center;">
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Report Kas Bulanan</h6>
+        </div>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <select id="blokppnkas" class="form-control" name="blokppnkas" required>
+                        <option value="">Blok Rumah</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="J">J</option>
+                        <option value="K">K</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="text" class="form-control datepickeryearkas" id="datepickeryearkas"
+                           name="datepickeryearkas" required>
+                </div>
+            </div>
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">No Rumah</th>
+                    <th scope="col">Januari</th>
+                    <th scope="col">Febuari</th>
+                    <th scope="col">Maret</th>
+                    <th scope="col">April</th>
+                    <th scope="col">Mei</th>
+                    <th scope="col">Juni</th>
+                    <th scope="col">Juli</th>
+                    <th scope="col">Agustus</th>
+                    <th scope="col">September</th>
+                    <th scope="col">Oktober</th>
+                    <th scope="col">November</th>
+                    <th scope="col">Desember</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>E5 - Imam Taufik</td>
+                    <td style="text-align: center;">
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".datepickeryear").datepicker({
+                format: " yyyy",
+                orientation: 'bottom',
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            }).on('changeDate', function (ev) {
+                //my work herec
+                console.log('tahun di klik')
+            });
+        });
+        $(function () {
+            $(".datepickeryearkas").datepicker({
+                format: " yyyy",
+                orientation: 'bottom',
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            }).on('changeDate', function (ev) {
+                //my work herec
+                console.log('tahun di klik')
+            });
+        });
+    </script>
+    <script src="{{ url_for('static',filename='js/report.js') }}"></script>
+{% endblock %}

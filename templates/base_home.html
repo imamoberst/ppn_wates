@@ -17,7 +17,8 @@
             rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{ url_for('static',filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    {% block head %}
+    {% endblock %}
 </head>
 
 <body id="page-top">
@@ -85,7 +86,12 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('report_view.home_report') }}">
+                <i class="fa fa-file"></i>
+                <span>Report</span></a>
+        </li>
+        <hr class="sidebar-divider">
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -251,7 +257,8 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
-
+{% block script %}
+{% endblock %}
 </body>
 
 </html>

@@ -1,14 +1,234 @@
 {% extends 'base_home.html' %}
+{% block head %}
+    <link href="{{ url_for('static',filename='css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+    <style type="text/css">
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">Informasi</h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Iuran Bulanan</h6>
         </div>
         <div class="card-body">
-            The styling for this basic card example is created by using default Bootstrap
-            utility classes. By using utility classes, the style of the card component can be
-            easily modified with no need for any custom CSS!
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="inputState">Tahun Pembayaran</label>
+                    <input type="text" class="form-control tahunbayar" id="tahunbayar"
+                           name="tahunbayar" required>
+                </div>
+            </div>
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Januari</th>
+                    <th scope="col">Febuari</th>
+                    <th scope="col">Maret</th>
+                    <th scope="col">April</th>
+                    <th scope="col">Mei</th>
+                    <th scope="col">Juni</th>
+                    <th scope="col">Juli</th>
+                    <th scope="col">Agustus</th>
+                    <th scope="col">September</th>
+                    <th scope="col">Oktober</th>
+                    <th scope="col">November</th>
+                    <th scope="col">Desember</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="text-align: center;">
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                </tbody>
+            </table>
         </div>
     </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Kas</h6>
+        </div>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="inputState">Tahun Pembayaran</label>
+                    <input type="text" class="form-control tahunkas" id="tahunkas"
+                           name="tahunkas" required>
+                </div>
+            </div>
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Januari</th>
+                    <th scope="col">Febuari</th>
+                    <th scope="col">Maret</th>
+                    <th scope="col">April</th>
+                    <th scope="col">Mei</th>
+                    <th scope="col">Juni</th>
+                    <th scope="col">Juli</th>
+                    <th scope="col">Agustus</th>
+                    <th scope="col">September</th>
+                    <th scope="col">Oktober</th>
+                    <th scope="col">November</th>
+                    <th scope="col">Desember</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-danger btn-circle">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-danger btn-circle">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".tahunbayar").datepicker({
+                format: " yyyy",
+                orientation: 'bottom',
+                viewMode: "years",
+                minViewMode: "years"
+            });
+        });
+        $(function () {
+            $(".tahunkas").datepicker({
+                format: " yyyy",
+                orientation: 'bottom',
+                viewMode: "years",
+                minViewMode: "years"
+            });
+        });
+        const thbayar = document.getElementById('tahunbayar')
+        const thbayarkas = document.getElementById('tahunkas')
+        const d = new Date()
+        const n = d.getFullYear()
+        thbayar.value = n
+        thbayarkas.value = n
+    </script>
 {% endblock %}
