@@ -5,8 +5,10 @@ from views.konfirmasi.konfirmasi_view import konfirmasi_view
 from views.verifikasi.verifikasi_view import verifikasi_view
 from views.alert.alert_view import alert_view
 from views.report.report_view import report_view
+from uuid import uuid4
 
 app = Flask(__name__)
+app.secret_key = uuid4().hex
 
 app.register_blueprint(login_view, url_prefix='/auth')
 app.register_blueprint(home_view)

@@ -12,10 +12,10 @@
     </style>
 {% endblock %}
 {% block content %}
-    <h1 class="h3 mb-4 text-gray-800">Informasi</h1>
+    <h1 class="h3 mb-4 text-gray-800">Informasi </h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Iuran Bulanan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Iuran Bulanan {{ session.norumah }}</h6>
         </div>
         <div class="card-body">
             <div class="form-row">
@@ -25,93 +25,177 @@
                            name="tahunbayar" required>
                 </div>
             </div>
-            <table class="table table-sm">
-                <thead>
-                <tr>
-                    <th scope="col">Januari</th>
-                    <th scope="col">Febuari</th>
-                    <th scope="col">Maret</th>
-                    <th scope="col">April</th>
-                    <th scope="col">Mei</th>
-                    <th scope="col">Juni</th>
-                    <th scope="col">Juli</th>
-                    <th scope="col">Agustus</th>
-                    <th scope="col">September</th>
-                    <th scope="col">Oktober</th>
-                    <th scope="col">November</th>
-                    <th scope="col">Desember</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td style="text-align: center;">
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                </tbody>
-            </table>
+            {% if data|length == 0 %}
+                <table class="table table-sm table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Januari</th>
+                        <th scope="col">Febuari</th>
+                        <th scope="col">Maret</th>
+                        <th scope="col">April</th>
+                        <th scope="col">Mei</th>
+                        <th scope="col">Juni</th>
+                        <th scope="col">Juli</th>
+                        <th scope="col">Agustus</th>
+                        <th scope="col">September</th>
+                        <th scope="col">Oktober</th>
+                        <th scope="col">November</th>
+                        <th scope="col">Desember</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                    </tbody>
+                </table>
+            {% else %}
+                <table class="table table-sm table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Januari</th>
+                        <th scope="col">Febuari</th>
+                        <th scope="col">Maret</th>
+                        <th scope="col">April</th>
+                        <th scope="col">Mei</th>
+                        <th scope="col">Juni</th>
+                        <th scope="col">Juli</th>
+                        <th scope="col">Agustus</th>
+                        <th scope="col">September</th>
+                        <th scope="col">Oktober</th>
+                        <th scope="col">November</th>
+                        <th scope="col">Desember</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="text-align: center;">
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-success btn-circle">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                    </tbody>
+                </table>
+            {% endif %}
         </div>
     </div>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Kas</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Kas {{ session.norumah }}</h6>
         </div>
         <div class="card-body">
             <div class="form-row">
@@ -121,7 +205,7 @@
                            name="tahunkas" required>
                 </div>
             </div>
-            <table class="table table-sm">
+            <table class="table table-sm table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Januari</th>
@@ -213,7 +297,8 @@
                 format: " yyyy",
                 orientation: 'bottom',
                 viewMode: "years",
-                minViewMode: "years"
+                minViewMode: "years",
+                autoclose: true
             });
         });
         $(function () {
@@ -221,7 +306,8 @@
                 format: " yyyy",
                 orientation: 'bottom',
                 viewMode: "years",
-                minViewMode: "years"
+                minViewMode: "years",
+                autoclose: true
             });
         });
         const thbayar = document.getElementById('tahunbayar')
@@ -230,5 +316,6 @@
         const n = d.getFullYear()
         thbayar.value = n
         thbayarkas.value = n
+        console.log = '{{ session.idwarga }}'
     </script>
 {% endblock %}

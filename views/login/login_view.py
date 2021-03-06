@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session, redirect, url_for
 import json
 from models.warga.warga import Warga
 
@@ -8,7 +8,18 @@ login_view = Blueprint('login_view', __name__)
 @login_view.route('/login', methods=['POST', 'GET'])
 def login_page():
     if request.method == 'POST':
-        return request.form
+        blokppn = request.form['blokrumah'].upper()
+        password = request.form['password']
+        warga_obj = Warga.is_valid_login(blokppn, password)
+        if warga_obj:
+            session['name'] = f'{warga_obj.nama_depan} {warga_obj.nama_belakang}'
+            session['level'] = warga_obj.level
+            session['idwarga'] = warga_obj._id
+            session['norumah'] = f"{warga_obj.blok_ppn}{warga_obj.no_ppn}"
+            return redirect(url_for('home_view.home_warga'))
+        else:
+            message = "Username or Password Salah"
+            return render_template('login/login.html', message=message)
     return render_template('login/login.html')
 
 
@@ -34,6 +45,8 @@ def register_warga():
                           tanggal_lahir, no_hp, agama, pekerjaan, password, jumlah_penghuni, rincian_penghuni)
         cari_warga_ppn = warga_obj.find_one_warga_from_db()
         if cari_warga_ppn is None:
+            warga_obj.hash_password()
+            warga_obj.tanggal_awal_daftar()
             warga_obj.save_one_to_db()
             messsage_succes = "Berhasil Mendaftar Dan Akan Di Verifikasi Oleh Petugas Terkait"
             return render_template('login/register.html', messsage_succes=messsage_succes)
@@ -45,4 +58,14 @@ def register_warga():
 
 @login_view.route('/logout')
 def logout():
-    return 'logout'
+    session.clear()
+    return redirect(url_for('.login_page'))
+
+
+@login_view.route('/user_profile')
+def user_profile():
+    try:
+        warga_obj = Warga.find_one_warga_by_blok(session['norumah'])
+        return render_template('login/user_profile.html', data=warga_obj.json())
+    except:
+        return redirect(url_for('home_view.home_warga'))
