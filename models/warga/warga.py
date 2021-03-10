@@ -11,7 +11,7 @@ class Warga:
                  tanggal_lahir, no_hp, agama, pekerjaan, password, jumlah_penghuni,
                  rincian_penghuni=None,
                  _id=None,
-                 aktif=None, level=None, iuran=None, tanggal_daftar=None, last_login=None):
+                 aktif=None, level=None, tanggal_daftar=None, last_login=None):
         self.nama_depan = nama_depan
         self.nama_belakang = nama_belakang
         self.nik = nik
@@ -30,7 +30,6 @@ class Warga:
         self._id = _id or uuid4().hex
         self.level = level or 'warga'
         self.aktif = aktif or False
-        self.iuran = iuran or []
         self.tanggal_daftar = tanggal_daftar or ''
         self.last_login = last_login or ''
 
@@ -40,7 +39,7 @@ class Warga:
                 "tempat_lahir": self.tempat_lahir, "tanggal_lahir": self.tanggal_lahir, "no_hp": self.no_hp,
                 "agama": self.agama, "pekerjaan": self.pekerjaan, "password": self.password,
                 "jumlah_penghuni": self.jumlah_penghuni, "rincian_penghuni": self.rincian_penghuni, "_id": self._id,
-                "aktif": self.aktif, "level": self.level, "iuran": self.iuran, "tanggal_daftar": self.tanggal_daftar,
+                "aktif": self.aktif, "level": self.level, "tanggal_daftar": self.tanggal_daftar,
                 "last_login": self.last_login}
 
     def save_one_to_db(self):
@@ -54,6 +53,14 @@ class Warga:
         blok = blokppn[0]
         no = blokppn[1:]
         data = Database.find_one(Warga.collection, {"blok_ppn": blok, "no_ppn": no})
+        if data:
+            return cls(**data)
+        else:
+            return False
+
+    @classmethod
+    def find_one_warga_by_id(cls, idwarga):
+        data = Database.find_one(Warga.collection, {"_id": idwarga})
         if data:
             return cls(**data)
         else:

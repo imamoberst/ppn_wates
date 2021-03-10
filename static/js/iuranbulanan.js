@@ -1,5 +1,16 @@
-const thbayar = document.getElementById('tahunbayar')
-const d = new Date()
-const n = d.getFullYear()
-thbayar.value = n
+let dataBulan = []
+const inputBulan = document.getElementById('databulan')
+const tCheck = document.querySelectorAll('.form-check-input')
+tCheck.forEach(function (e) {
+    e.addEventListener('change', function (e) {
+        if (this.checked) {
+            let bulan = e.target.value
+            dataBulan.push(bulan)
+            inputBulan.value = dataBulan
+        } else {
+            let bulan = e.target.value
+            dataBulan = dataBulan.filter(e => e !== bulan)
+        }
+    })
 
+})

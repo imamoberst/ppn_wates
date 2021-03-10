@@ -7,8 +7,13 @@ from views.alert.alert_view import alert_view
 from views.report.report_view import report_view
 from uuid import uuid4
 
+BUKTI_BAYAR_IURAN = './static/upload/bukti_bayar_iuran'
+BUKTI_BAYAR_KAS = './static/upload/bukti_bayar_kas'
+
 app = Flask(__name__)
 app.secret_key = uuid4().hex
+app.config['BUKTI_BAYAR_IURAN'] = BUKTI_BAYAR_IURAN
+app.config['BUKTI_BAYAR_KAS'] = BUKTI_BAYAR_KAS
 
 app.register_blueprint(login_view, url_prefix='/auth')
 app.register_blueprint(home_view)

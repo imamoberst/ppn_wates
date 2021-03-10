@@ -10,7 +10,10 @@ def login_page():
     if request.method == 'POST':
         blokppn = request.form['blokrumah'].upper()
         password = request.form['password']
-        warga_obj = Warga.is_valid_login(blokppn, password)
+        try:
+            warga_obj = Warga.is_valid_login(blokppn, password)
+        except:
+            return render_template('login/login.html', message="Warga Belum Terdaftar")
         if warga_obj:
             session['name'] = f'{warga_obj.nama_depan} {warga_obj.nama_belakang}'
             session['level'] = warga_obj.level

@@ -3,90 +3,189 @@
     <link href="{{ url_for('static',filename='css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
 {% endblock %}
 {% block content %}
-    <h1 class="h3 mb-4 text-gray-800">Konfirmasi Iuran Bulanan</h1>
+    <h1 class="h3 mb-4 text-gray-800">Konfirmasi Iuran Bulanan {{ tahun }}</h1>
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            {{ success }}
+        </div>
+    {% endif %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Input Informasi Pembayaran</h6>
         </div>
         <div class="card-body">
-            <form>
+            <form method="post" enctype=multipart/form-data>
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="inputState">Tahun Pembayaran</label>
-                        <input type="text" class="form-control datepickeryear" id="tahunbayar"
+                        <input type="text" class="form-control datepickeryear" id="tahunbayar" {% if data %}
+                               value="{{ data.tahunbayar }}" {% endif %}
                                name="tahunbayar" required>
                     </div>
                 </div>
                 <hr>
                 <label for="inputState">Bulan Pembayaran</label>
+                <div id="lunas"></div>
                 <div class="form-row">
                     <div class="form-group col">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">Januari</label>
+                            {% if bulan_from_home == 'januari' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="januari"
+                                       value="januari"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="januari"
+                                       value="januari">
+                            {% endif %}
+                            <label class="form-check-label" for="januari">Januari</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">Febuari</label>
+                            {% if bulan_from_home == 'febuari' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="febuari"
+                                       value="febuari"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="febuari"
+                                       value="febuari">
+                            {% endif %}
+                            <label class="form-check-label" for="febuari">Febuari</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">Maret</label>
+                            {% if bulan_from_home == 'maret' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="maret"
+                                       value="maret"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="maret"
+                                       value="maret">
+                            {% endif %}
+                            <label class="form-check-label" for="maret">Maret</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">April</label>
+                            {% if bulan_from_home == 'april' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="april"
+                                       value="april"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="april"
+                                       value="april">
+                            {% endif %}
+                            <label class="form-check-label" for="april">April</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">Mei</label>
+                            {% if bulan_from_home == 'mei' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="mei"
+                                       value="mei"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="mei"
+                                       value="mei">
+                            {% endif %}
+                            <label class="form-check-label" for="mei">Mei</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">Juni</label>
+                            {% if bulan_from_home == 'juni' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="juni"
+                                       value="juni"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="juni"
+                                       value="juni">
+                            {% endif %}
+                            <label class="form-check-label" for="juni">Juni</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">Juli</label>
+                            {% if bulan_from_home == 'juli' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="juli"
+                                       value="juli"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="juli"
+                                       value="juli">
+                            {% endif %}
+                            <label class="form-check-label" for="juli">Juli</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">Agustus</label>
+                            {% if bulan_from_home == 'agustus' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="agustus"
+                                       value="agustus"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="agustus"
+                                       value="agustus">
+                            {% endif %}
+                            <label class="form-check-label" for="agustus">Agustus</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">September</label>
+                            {% if bulan_from_home == 'september' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="september"
+                                       value="september"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="september"
+                                       value="september">
+                            {% endif %}
+                            <label class="form-check-label" for="september">September</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">Oktober</label>
+                            {% if bulan_from_home == 'oktober' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="oktober"
+                                       value="oktober"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="oktober"
+                                       value="oktober">
+                            {% endif %}
+                            <label class="form-check-label" for="oktober">Oktober</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">November</label>
+                            {% if bulan_from_home == 'november' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="november"
+                                       value="november"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="november"
+                                       value="november">
+                            {% endif %}
+                            <label class="form-check-label" for="november">November</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">Desember</label>
+                            {% if bulan_from_home == 'desember' %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="desember"
+                                       value="desember"
+                                       checked>
+                            {% else %}
+                                <input class="form-check-input pcheckbox" type="checkbox" id="desember"
+                                       value="desember">
+                            {% endif %}
+                            <label class="form-check-label" for="desember">Desember</label>
                         </div>
                     </div>
+                    <input class="form-control" type="hidden" id="databulan" name="databulan" {% if dataiuran %}
+                           value="{{ dataiuran }}" {% else %}value="kosong" {% endif %}>
                 </div>
                 <hr>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="namapembayar">Nama Rekening </label>
-                        <input type="text" class="form-control" id="namapembayar" name="namapembayar">
+                        <input type="text" class="form-control" id="namapembayar" name="namapembayar" {% if data %}
+                               value="{{ data.namapembayar }}" {% endif %} required>
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="tanggalbayar">Tanggal Pembayaran</label>
-                        <input type="text" class="form-control tanggalbayar" id="tanggalbayar" name="tanggalbayar">
+                        <input type="text" class="form-control tanggalbayar" id="tanggalbayar" name="tanggalbayar"
+                               {% if data %}value="{{ data.tanggalbayar }}" {% endif %} required>
                     </div>
                     <div class="form-group col">
                         <label for="tanggalbayar">Upload Bukti Transfer</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <input name="uploadbukti" type="file" class="form-control-file" id="uploadbukti" required/>
                         </div>
                     </div>
                 </div>
@@ -95,6 +194,7 @@
                     <textarea class="form-control" id="catatan" rows="3" name="catatan"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Konfirmasi</button>
+                <a href="{{ url_for('home_view.home_warga') }}" class="btn btn-secondary">Back</a>
             </form>
         </div>
     </div>
@@ -111,18 +211,49 @@
                 minViewMode: "years",
                 autoclose: true
             }).on('changeDate', function (ev) {
-                //my work herec
-                console.log('tahun di klik')
+                tahundata = document.getElementById('tahunbayar').value
+                window.location = `${window.origin}/konfirmasi/iuranbulanan?tahun=${tahundata.replace(/\s+/g, '')}`
             });
         });
         $(function () {
             $(".tanggalbayar").datepicker({
                 format: 'yyyy-mm-dd',
                 orientation: 'bottom',
-                startDate: '1940-01-01',
                 autoclose: true
             });
         });
     </script>
+    {% if data %}
+        <script>console.log('Please Input Bulan')</script>
+    {% else %}
+        <script>
+            const thbayar = document.getElementById('tahunbayar')
+            const d = new Date()
+            const n = d.getFullYear()
+            thbayar.value = n
+        </script>
+    {% endif %}
+    {% if tahun %}
+        <script>
+            thbayar.value = '{{ tahun }}'
+        </script>
+    {% endif %}
     <script src="{{ url_for('static',filename='js/iuranbulanan.js') }}"></script>
+    {% if dataiuran %}
+        <script>
+            let bulanTahun = ["januari", "febuari", "maret", "april", "mei", "juni", "juli", "agustus", "september", "oktober", "november", "desember"]
+            let inputDataBulan = JSON.parse(inputBulan.value)
+            const difference = bulanTahun.filter(x => !inputDataBulan.includes(x));
+            let divCheck = document.querySelectorAll('.form-check-inline')
+            let newBul = Array.from(divCheck).filter(function (e) {
+                inBul = e.querySelector('.pcheckbox').value
+                if (!difference.includes(inBul)) {
+                    e.remove()
+                }
+            })
+            if (difference.length === 0) {
+                document.getElementById('lunas').innerHTML = `<h3>Tahun ${thbayar.value} Lunas</h3>`
+            }
+        </script>
+    {% endif %}
 {% endblock %}

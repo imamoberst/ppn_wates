@@ -16,3 +16,11 @@ class Database:
     @staticmethod
     def update_last_login(collection, query, data):
         Database.DATABASE[collection].update_one(query, {"$set": data}, upsert=True)
+
+    @staticmethod
+    def update_one_data(collection, query, data):
+        Database.DATABASE[collection].update_one(query, {"$set": data}, upsert=True)
+
+    @staticmethod
+    def find(collection, data):
+        return Database.DATABASE[collection].find(data)

@@ -16,6 +16,11 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Iuran Bulanan {{ session.norumah }}</h6>
+            {% if message %}
+                <div class="alert alert-success" role="alert">
+                    Terima Kasih Atas Pembayaran Anda, Pembayaran Akan di Verifikasi Oleh Petugas Terkait
+                </div>
+            {% endif %}
         </div>
         <div class="card-body">
             <div class="form-row">
@@ -43,71 +48,84 @@
                         <th scope="col">Desember</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="iuranbody">
                     <tr>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='januari') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='febuari') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='maret') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='april') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='mei') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='juni') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='juli') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='agustus') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='september') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='oktober') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='november') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
+                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='desember') }}"
+                               class="btn btn-sm btn-danger btn-circle">
                                 <i class="fas fa-times"></i>
                             </a>
                         </td>
                     </tbody>
                 </table>
             {% else %}
+                {{ data }}
                 <table class="table table-sm table-bordered">
                     <thead>
                     <tr>
@@ -127,7 +145,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td style="text-align: center;">
+                        <td>
                             <a href="#" class="btn btn-sm btn-success btn-circle">
                                 <i class="fas fa-check"></i>
                             </a>
@@ -222,64 +240,64 @@
                     <th scope="col">Desember</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="kastbody">
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle">
+                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
                         <i class="fas fa-check"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-danger btn-circle">
+                    <a href="#" class="btn btn-sm btn-danger btn-circle tdbulanan">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-danger btn-circle">
+                    <a href="#" class="btn btn-sm btn-danger btn-circle tdbulanan">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>
@@ -299,6 +317,9 @@
                 viewMode: "years",
                 minViewMode: "years",
                 autoclose: true
+            }).on('changeDate', function (ev) {
+                tahundata = document.getElementById('tahunbayar').value
+                window.location = `${window.origin}/?tahun=${tahundata.replace(/\s+/g, '')}`
             });
         });
         $(function () {
@@ -308,7 +329,7 @@
                 viewMode: "years",
                 minViewMode: "years",
                 autoclose: true
-            });
+            })
         });
         const thbayar = document.getElementById('tahunbayar')
         const thbayarkas = document.getElementById('tahunkas')
@@ -316,6 +337,12 @@
         const n = d.getFullYear()
         thbayar.value = n
         thbayarkas.value = n
-        console.log = '{{ session.idwarga }}'
     </script>
+    <script src="{{ url_for('static',filename='js/home.js') }}"></script>
+    {% if tahun %}
+        <script>
+            tahundata = document.getElementById('tahunbayar')
+            tahundata.value = '{{ tahun }}'
+        </script>
+    {% endif %}
 {% endblock %}
