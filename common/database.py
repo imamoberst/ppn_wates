@@ -24,3 +24,7 @@ class Database:
     @staticmethod
     def find(collection, data):
         return Database.DATABASE[collection].find(data)
+
+# db.mycollection.find({
+#     "someArray.someNestedArray.name": "value"
+# })

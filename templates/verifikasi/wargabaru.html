@@ -1,4 +1,15 @@
 {% extends 'base_home.html' %}
+{% block head %}
+    <style type="text/css">
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">Verifikasi Warga Baru</h1>
     <div class="card shadow mb-4">
@@ -6,26 +17,47 @@
             <h6 class="m-0 font-weight-bold text-primary">List Warga Baru Yang Belum Di Konfirmasi</h6>
         </div>
         <div class="card-body">
-            <table class="table table-sm">
-                <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Alamat Rumah</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>E5</td>
-                    <td>
-                        <button class="btn btn-sm btn-danger">Konfirmasi</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            {% if data | length == 0 %}
+                <h3>Tidak Ada Warga Baru</h3>
+            {% else %}
+                <table class="table table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Alamat PPN</th>
+                        <th scope="col">Jumlah Penghuni</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in range(data|length) %}
+                        <tr>
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ data[i].nama_depan }} {{ data[i].nama_belakang }}</td>
+                            <td>{{ data[i].blok_ppn }}{{ data[i].no_ppn }}</td>
+                            <td>{{ data[i].jumlah_penghuni }}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger confirmwarga"
+                                        data-idwarga="{{ data[i]._id }}">Konfirmasi
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
         </div>
     </div>
+{% endblock %}
+{% block script %}
+    <script>
+        const confirmwarga = Array.from(document.querySelectorAll('.confirmwarga'))
+        confirmwarga.forEach(function (e) {
+            const idwarga = e.dataset.idwarga
+            e.addEventListener('click', () => {
+                console.log(idwarga)
+            })
+        })
+    </script>
 {% endblock %}

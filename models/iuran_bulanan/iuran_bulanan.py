@@ -30,6 +30,17 @@ class TahunIuran:
         except:
             return None
 
+    @classmethod
+    def find_all_warga_by_iuran_blm_konfirm(cls):
+        try:
+            return [cls(**d) for d in Database.find(cls.collection, {"iuran.iuranbulanan.status": "belum_bayar"})]
+        except:
+            return None
+
+    @classmethod
+    def find_all_iuran_warga(cls):
+        return [cls(**data) for data in Database.find(cls.collection, {})]
+
     def save_to_db(self):
         Database.insert_one(TahunIuran.collection, self.json())
 

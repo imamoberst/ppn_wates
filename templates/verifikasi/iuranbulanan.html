@@ -1,4 +1,15 @@
 {% extends 'base_home.html' %}
+{% block head %}
+    <style type="text/css">
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">Verifikasi Iuran Bulanan</h1>
     <div class="card shadow mb-4">
@@ -10,22 +21,39 @@
                 <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Alamat Rumah</th>
+                    <th scope="col">Rumah PPN</th>
+                    <th scope="col">Tahun</th>
+                    <th scope="col">Bulan</th>
+                    <th scope="col">Tgl Bayar</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>E5</td>
-                    <td>
-                        <button class="btn btn-sm btn-danger">Konfirmasi</button>
-                    </td>
-                </tr>
+                {% for i in range(data|length) %}
+                    <tr>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ data[i]['norumah'] }}</td>
+                        <td>{{ data[i]['tahun'] }}</td>
+                        <td>{{ data[i]['bulan'] }}</td>
+                        <td>{{ data[i]['tanggal_bayar'] }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger confirmbayar" data-idwarga="{{ data[i]['idwarga'] }}">
+                                Konfirmasi
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+{% endblock %}
+{% block script %}
+    <script>
+        const confirmbayar = Array.from(document.querySelectorAll('.confirmbayar'))
+        confirmbayar.forEach(function (e) {
+            e.addEventListener('click', () => console.log(e.dataset.idwarga)
+            )
+        })
+    </script>
 {% endblock %}

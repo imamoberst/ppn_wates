@@ -52,7 +52,7 @@ class Warga:
     def find_one_warga_by_blok(cls, blokppn):
         blok = blokppn[0]
         no = blokppn[1:]
-        data = Database.find_one(Warga.collection, {"blok_ppn": blok, "no_ppn": no})
+        data = Database.find_one(Warga.collection, {"blok_ppn": blok, "no_ppn": no, "aktif": True})
         if data:
             return cls(**data)
         else:
@@ -63,6 +63,14 @@ class Warga:
         data = Database.find_one(Warga.collection, {"_id": idwarga})
         if data:
             return cls(**data)
+        else:
+            return False
+
+    @classmethod
+    def find_one_warga_by_aktif(cls):
+        data = Database.find(Warga.collection, {"aktif": False})
+        if data:
+            return [cls(**d) for d in data]
         else:
             return False
 
