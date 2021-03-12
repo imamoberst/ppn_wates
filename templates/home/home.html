@@ -10,6 +10,7 @@
             text-align: center;
         }
     </style>
+
 {% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">Informasi </h1>
@@ -28,186 +29,103 @@
                     <label for="inputState">Tahun Pembayaran</label>
                     <input type="text" class="form-control tahunbayar" id="tahunbayar"
                            name="tahunbayar" required>
+                    <input type="hidden" class="form-control dataiuran" value="{{ dataiuran }}">
                 </div>
             </div>
-            {% if data|length == 0 %}
-                <table class="table table-sm table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col">Januari</th>
-                        <th scope="col">Febuari</th>
-                        <th scope="col">Maret</th>
-                        <th scope="col">April</th>
-                        <th scope="col">Mei</th>
-                        <th scope="col">Juni</th>
-                        <th scope="col">Juli</th>
-                        <th scope="col">Agustus</th>
-                        <th scope="col">September</th>
-                        <th scope="col">Oktober</th>
-                        <th scope="col">November</th>
-                        <th scope="col">Desember</th>
-                    </tr>
-                    </thead>
-                    <tbody id="iuranbody">
-                    <tr>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='januari') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='febuari') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='maret') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='april') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='mei') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='juni') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='juli') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='agustus') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='september') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='oktober') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='november') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='desember') }}"
-                               class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                    </tbody>
-                </table>
-            {% else %}
-                {{ data }}
-                <table class="table table-sm table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col">Januari</th>
-                        <th scope="col">Febuari</th>
-                        <th scope="col">Maret</th>
-                        <th scope="col">April</th>
-                        <th scope="col">Mei</th>
-                        <th scope="col">Juni</th>
-                        <th scope="col">Juli</th>
-                        <th scope="col">Agustus</th>
-                        <th scope="col">September</th>
-                        <th scope="col">Oktober</th>
-                        <th scope="col">November</th>
-                        <th scope="col">Desember</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-success btn-circle">
-                                <i class="fas fa-check"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-danger btn-circle">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </td>
-                    </tbody>
-                </table>
-            {% endif %}
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Januari</th>
+                    <th scope="col">Febuari</th>
+                    <th scope="col">Maret</th>
+                    <th scope="col">April</th>
+                    <th scope="col">Mei</th>
+                    <th scope="col">Juni</th>
+                    <th scope="col">Juli</th>
+                    <th scope="col">Agustus</th>
+                    <th scope="col">September</th>
+                    <th scope="col">Oktober</th>
+                    <th scope="col">November</th>
+                    <th scope="col">Desember</th>
+                </tr>
+                </thead>
+                <tbody id="iuranbody">
+                <tr>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='januari') }}"
+                           class="btn btn-sm btn-danger btn-circle januari">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='febuari') }}"
+                           class="btn btn-sm btn-danger btn-circle febuari">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='maret') }}"
+                           class="btn btn-sm btn-danger btn-circle maret">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='april',tahun='2019') }}"
+                           class="btn btn-sm btn-danger btn-circle april">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='mei') }}"
+                           class="btn btn-sm btn-danger btn-circle mei">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='juni') }}"
+                           class="btn btn-sm btn-danger btn-circle juni">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='juli') }}"
+                           class="btn btn-sm btn-danger btn-circle juli">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='agustus') }}"
+                           class="btn btn-sm btn-danger btn-circle agustus">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='september') }}"
+                           class="btn btn-sm btn-danger btn-circle september">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='oktober') }}"
+                           class="btn btn-sm btn-danger btn-circle oktober">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='november') }}"
+                           class="btn btn-sm btn-danger btn-circle november">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('konfirmasi_view.iuran_bulanan',bulan='desember') }}"
+                           class="btn btn-sm btn-danger btn-circle desember">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -221,6 +139,7 @@
                     <label for="inputState">Tahun Pembayaran</label>
                     <input type="text" class="form-control tahunkas" id="tahunkas"
                            name="tahunkas" required>
+                    <input type="hidden" class="form-control datakas" value="{{ datakas }}">
                 </div>
             </div>
             <table class="table table-sm table-bordered">
@@ -242,62 +161,74 @@
                 </thead>
                 <tbody id="kastbody">
                 <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-success btn-circle tdbulanan">
-                        <i class="fas fa-check"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-sm btn-danger btn-circle tdbulanan">
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='januari') }}"
+                       class="btn btn-sm btn-danger btn-circle januarikas">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-danger btn-circle tdbulanan">
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='febuari') }}"
+                       class="btn btn-sm btn-danger btn-circle febuarikas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='maret') }}"
+                       class="btn btn-sm btn-danger btn-circle maretkas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='april') }}"
+                       class="btn btn-sm btn-danger btn-circle aprilkas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='mei') }}"
+                       class="btn btn-sm btn-danger btn-circle meikas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='juni') }}"
+                       class="btn btn-sm btn-danger btn-circle junikas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='juli') }}"
+                       class="btn btn-sm btn-danger btn-circle julikas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='agustus') }}"
+                       class="btn btn-sm btn-danger btn-circle agustuskas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='september') }}"
+                       class="btn btn-sm btn-danger btn-circle septemberkas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='oktober') }}"
+                       class="btn btn-sm btn-danger btn-circle oktoberkas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='november') }}"
+                       class="btn btn-sm btn-danger btn-circle novemberkas">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('konfirmasi_view.iurankas',bulan='desember') }}"
+                       class="btn btn-sm btn-danger btn-circle desemberkas">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>
@@ -310,6 +241,12 @@
     <script type="text/javascript"
             src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript">
+        const dataInputIuran = document.querySelector('.dataiuran')
+        const dataInputKas = document.querySelector('.datakas')
+        let dataiuran = JSON.parse(dataInputIuran.value)
+        let datakas = JSON.parse(dataInputKas.value)
+        let tahundata = document.getElementById('tahunbayar')
+        const tahunkas = document.getElementById('tahunkas')
         $(function () {
             $(".tahunbayar").datepicker({
                 format: " yyyy",
@@ -317,9 +254,8 @@
                 viewMode: "years",
                 minViewMode: "years",
                 autoclose: true
-            }).on('changeDate', function (ev) {
-                tahundata = document.getElementById('tahunbayar').value
-                window.location = `${window.origin}/?tahun=${tahundata.replace(/\s+/g, '')}`
+            }).on('changeDate', function () {
+                window.location = `${window.origin}/?tahun=${tahundata.value.replace(/\s+/g, '')}`
             });
         });
         $(function () {
@@ -329,20 +265,15 @@
                 viewMode: "years",
                 minViewMode: "years",
                 autoclose: true
-            })
+            }).on('changeDate', function () {
+                window.location = `${window.origin}/?tahunkas=${tahunkas.value.replace(/\s+/g, '')}`
+            });
         });
-        const thbayar = document.getElementById('tahunbayar')
-        const thbayarkas = document.getElementById('tahunkas')
-        const d = new Date()
-        const n = d.getFullYear()
-        thbayar.value = n
-        thbayarkas.value = n
+        tahundata.value = '{{ tahun }}'
+        tahunkas.value = '{{ tahunkas }}'
     </script>
-    <script src="{{ url_for('static',filename='js/home.js') }}"></script>
-    {% if tahun %}
-        <script>
-            tahundata = document.getElementById('tahunbayar')
-            tahundata.value = '{{ tahun }}'
-        </script>
-    {% endif %}
+    <script src="{{ url_for('static',filename='js/setahuniuran.js') }}">
+    </script>
+    <script src="{{ url_for('static',filename='js/setahunkas.js') }}">
+    </script>
 {% endblock %}

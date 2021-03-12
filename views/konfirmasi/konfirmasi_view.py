@@ -20,6 +20,7 @@ def iuran_bulanan():
     #######START POST###########
     if request.method == 'POST':
         file = request.files['uploadbukti']
+        print(request.form['databulan'])
         if request.form['databulan'] == 'kosong':
             return render_template('konfirmasi/iuranbulanan.html',
                                    error="Belum Pilih Bulan Pembayaran", data=request.form)
@@ -48,7 +49,7 @@ def iuran_bulanan():
                         tahun_fromdb[0]['iuranbulanan'].append(iuran_bulanan_obj.json())
                     iuran_obj.update_db()
 
-                return redirect(url_for('home_view.home_warga', success="success!"))
+                return redirect(url_for('home_view.home_warga', success="success"))
             else:  # JIKA TIDAK ADA IURAN
                 tahuniuran_obj = TahunIuran(idwarga, norumah)
                 tahun_obj = Tahun(tahunbayar)
@@ -72,7 +73,8 @@ def iuran_bulanan():
         tahun_from_datetime = str(datetime.now().year)
     iuran_obj = TahunIuran.find_one_warga_by_idwarga(idwarga)
     if iuran_obj is None:
-        return render_template('konfirmasi/iuranbulanan.html', bulan_from_home=bulan_from_home)
+        return render_template('konfirmasi/iuranbulanan.html', bulan_from_home=bulan_from_home,
+                               tahun=tahun_from_datetime)
     tahun_fromdb = [d for d in iuran_obj.iuran if tahun_from_datetime in d['tahun']]
     if len(tahun_fromdb) == 0:
         return render_template('konfirmasi/iuranbulanan.html', tahun=tahun_from_datetime,

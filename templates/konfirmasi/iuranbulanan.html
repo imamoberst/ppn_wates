@@ -238,11 +238,14 @@
             thbayar.value = '{{ tahun }}'
         </script>
     {% endif %}
+
     <script src="{{ url_for('static',filename='js/iuranbulanan.js') }}"></script>
+
     {% if dataiuran %}
         <script>
             let bulanTahun = ["januari", "febuari", "maret", "april", "mei", "juni", "juli", "agustus", "september", "oktober", "november", "desember"]
             let inputDataBulan = JSON.parse(inputBulan.value)
+            inputBulan.value = 'kosong'
             const difference = bulanTahun.filter(x => !inputDataBulan.includes(x));
             let divCheck = document.querySelectorAll('.form-check-inline')
             let newBul = Array.from(divCheck).filter(function (e) {
@@ -254,6 +257,12 @@
             if (difference.length === 0) {
                 document.getElementById('lunas').innerHTML = `<h3>Tahun ${thbayar.value} Lunas</h3>`
             }
+        </script>
+    {% endif %}
+    {% if bulan_from_home %}
+        <script>
+            dataBulan.push('{{ bulan_from_home }}')
+            inputBulan.value = '{{ bulan_from_home }}'
         </script>
     {% endif %}
 {% endblock %}
