@@ -2,7 +2,7 @@ let dataBulan = []
 const inputBulan = document.getElementById('databulan')
 const tCheck = document.querySelectorAll('.form-check-input')
 tCheck.forEach(function (e) {
-    e.addEventListener('change', function (e) {
+    e.addEventListener('click', function (e) {
         if (this.checked) {
             let bulan = e.target.value
             dataBulan.push(bulan)

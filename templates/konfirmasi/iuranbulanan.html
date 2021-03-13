@@ -183,7 +183,7 @@
                                {% if data %}value="{{ data.tanggalbayar }}" {% endif %} required>
                     </div>
                     <div class="form-group col">
-                        <label for="tanggalbayar">Upload Bukti Transfer</label>
+                        <label for="uploadbukti">Upload Bukti Transfer</label>
                         <div class="custom-file">
                             <input name="uploadbukti" type="file" class="form-control-file" id="uploadbukti" required/>
                         </div>
@@ -222,17 +222,12 @@
                 autoclose: true
             });
         });
+        const thbayar = document.getElementById('tahunbayar')
+        const d = new Date()
+        const n = d.getFullYear()
+        thbayar.value = n
     </script>
-    {% if data %}
-        <script>console.log('Please Input Bulan')</script>
-    {% else %}
-        <script>
-            const thbayar = document.getElementById('tahunbayar')
-            const d = new Date()
-            const n = d.getFullYear()
-            thbayar.value = n
-        </script>
-    {% endif %}
+
     {% if tahun %}
         <script>
             thbayar.value = '{{ tahun }}'
