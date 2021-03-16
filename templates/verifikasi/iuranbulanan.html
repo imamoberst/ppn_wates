@@ -37,7 +37,8 @@
                         <td>{{ data[i]['bulan'] }}</td>
                         <td>{{ data[i]['tanggal_bayar'] }}</td>
                         <td>
-                            <button class="btn btn-sm btn-danger confirmbayar" data-idwarga="{{ data[i]['idwarga'] }}">
+                            <button class="btn btn-sm btn-danger confirmbayar" data-idwarga="{{ data[i]['idwarga'] }}"
+                                    data-bulan="{{ data[i]['bulan'] }}" data-tahun="{{ data[i]['tahun'] }}">
                                 Konfirmasi
                             </button>
                         </td>
@@ -52,7 +53,9 @@
     <script>
         const confirmbayar = Array.from(document.querySelectorAll('.confirmbayar'))
         confirmbayar.forEach(function (e) {
-            e.addEventListener('click', () => console.log(e.dataset.idwarga)
+            e.addEventListener('click', () => {
+                    window.location = `${window.origin}/verifikasi/iuranbulanan_details?idwarga=${e.dataset.idwarga}&bulan=${e.dataset.bulan}&tahun=${e.dataset.tahun}`
+                }
             )
         })
     </script>

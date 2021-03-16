@@ -1,0 +1,128 @@
+{% extends 'base_home.html' %}
+{% block head %}
+    <style type="text/css">
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1 class="h3 mb-4 text-gray-800">Warga Baru</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Warga Baru {{ data.blok_ppn }}{{ data.no_ppn }}
+                - {{ data.nama_depan }} {{ data.nama_belakang }}</h6>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="namadepan">Nama Depan :</label>
+                        <input type="text" class="form-control" id="namadepan" name="namadepan"
+                               value="{{ data.nama_depan }}" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="namabelakang">Nama Belakang :</label>
+                        <input type="text" class="form-control" id="namabelakang" name="namabelakang"
+                               value="{{ data.nama_belakang }}" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="nik">NIK :</label>
+                        <input type="text" class="form-control" id="nik" name="nik"
+                               value="{{ data.nik }}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="alamatktp">Alamat Sesuai KTP :</label>
+                    <input type="text" class="form-control" id="alamatktp" name="alamatktp"
+                           value="{{ data.alamat_ktp }}" readonly>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="blokppn">Blok Di PPN :</label>
+                        <input type="text" class="form-control" id="blokppn" name="blokppn" value="{{ data.blok_ppn }}"
+                               readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="noppn">No. di PPN :</label>
+                        <input type="number" min="1" class="form-control" id="noppn" name="noppn"
+                               value="{{ data.no_ppn }}" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="alamatemail">Alamat Email :</label>
+                        <input type="text" class="form-control" id="alamatemail" name="alamatemail"
+                               value="{{ data.email }}" readonly>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="tempatlahir">Tempat Lahir :</label>
+                        <input type="text" class="form-control" id="tempatlahir" name="tempatlahir"
+                               value="{{ data.tempat_lahir }}" readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Tgl Lahir :</label>
+                        <input type="text" class="form-control datepicker" id="tanggallahir"
+                               name="tanggallahir"
+                               value="{{ data.tanggal_lahir }}" readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="nohp">No. HP :</label>
+                        <input type="text" class="form-control" id="nohp" name="nohp"
+                               value="{{ data.no_hp }}" readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="agama">Agama :</label>
+                        <input readonly class="form-control" id="agama" name="agama" value="{{ data.agama }}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="pekerjaan">Pekerjaan :</label>
+                        <input type="text" class="form-control" id="pekerjaan" name="pekerjaan"
+                               value="{{ data.pekerjaan }}" readonly>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-2">
+                        <label for="jmlpenghuni">Jumlah Penghuni :</label>
+                        <input type="text" class="form-control" id="jmlpenghuni" name="jmlpenghuni"
+                               value="{{ data.jumlah_penghuni }}" readonly>
+                    </div>
+                </div>
+                <div class="mt-3 mb-5">
+
+                    <table class="table mb-5">
+                        <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Status Hubungan Keluarga</th>
+                            <th scope="col">Keterangan</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbodykeluarga">
+                        {% for d in data.rincian_penghuni %}
+                            <tr>
+                                <td>{{ d.indexkeluarga }}</td>
+                                <td>{{ d.namakeluarga }}</td>
+                                <td>{{ d.hubungankeluarga }}</td>
+                                <td>{{ d.keterangan }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-5">
+                    <button type="submit" class="btn btn-primary">OK</button>
+                    <button type="submit" class="btn btn-danger">Tidak OK</button>
+                    <a class="btn btn-secondary" href="{{ url_for('verifikasi_view.wargabaru') }}">Back</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

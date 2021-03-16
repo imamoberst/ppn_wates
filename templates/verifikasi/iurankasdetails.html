@@ -1,0 +1,90 @@
+{% extends 'base_home.html' %}
+{% block content %}
+    <h1 class="h3 mb-4 text-gray-800">Detail Iuran {{ data.norumah }} {{ data.bulan }} {{ data.tahun }}</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Detail Pembayaran</h6>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype=multipart/form-data>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="tahunbayar">Tahun Pembayaran</label>
+                        <input type="text" class="form-control datepickeryear" id="tahunbayar" value="{{ data.tahun }}"
+                               name="tahunbayar" readonly>
+                    </div>
+                </div>
+                <hr>
+                <label for="inputState">Bulan Pembayaran</label>
+                <div id="lunas"></div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="{{ data.bulan }}"
+                                   value="{{ data.bulan }}" checked disabled name="bulan">
+                            <label class="form-check-label" for="{{ data.bulan }}">{{ data.bulan }}</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="namapembayar">Nama Rekening </label>
+                        <input type="text" class="form-control" id="namapembayar" name="namapembayar"
+                               value="{{ data.nama_rekening }}" readonly>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="tanggalbayar">Tanggal Pembayaran</label>
+                        <input type="text" class="form-control tanggalbayar" id="tanggalbayar" name="tanggalbayar"
+                               value="{{ data.tanggal_bayar }}" readonly>
+                    </div>
+                    <div class="form-group col">
+                        <label for="uploadbukti">Bukti Transfer</label>
+                        <div class="custom-file">
+                            <button class="btn btn-warning btn-sm ml-4 mt-1" type="button" data-toggle="modal"
+                                    data-target="#buktitransfer" data-filename="{{ data.bukti_bayar_iuran }}">
+                                view
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catatan">Catatan dari {{ data.norumah }}</label>
+                    <textarea class="form-control" id="catatan" rows="3" name="catatan"
+                              readonly>{{ data.catatan }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="catatanpetugas">Catatan</label>
+                    <textarea class="form-control" id="catatanpetugas" rows="3" name="catatanpetugas"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">OK</button>
+                <button type="submit" class="btn btn-danger">Tidak OK</button>
+
+                <a href="{{ url_for('verifikasi_view.iurankas') }}" class="btn btn-secondary">Back</a>
+            </form>
+        </div>
+    </div>
+    <!-- Modal image -->
+    <div class="modal fade" id="buktitransfer" tabindex="-1" role="dialog" aria-labelledby="buktitransferLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="buktitransferLabel">Bukti Transfer {{ data.norumah }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ url_for('static',filename='upload/bukti_bayar_kas/' + data.bukti_bayar_iuran) }}"
+                         alt="{{ data.bukti_bayar_iuran }}" width="455" height="300">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+{% endblock %}

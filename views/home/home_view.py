@@ -41,7 +41,7 @@ def home_warga():
                                    tahun=tahun_from_datetime, tahunkas=tahunkas)
         else:  # Jika ada iuran warga di db
             datatahun = [d['iuranbulanan'] for d in tahun_obj.iuran if d['tahun'] == tahun_from_datetime][0]
-            datakas = [d['iurankas'] for d in tahun_obj.iuran if d['tahun'] == tahun_from_datetime][0]
+            datakas = [d['iurankas'] for d in tahun_obj.iuran if d['tahun'] == tahunkas][0]
             return render_template('home/home.html', dataiuran=json.dumps(datatahun), datakas=json.dumps(datakas),
                                    message=message,
                                    tahun=tahun_from_datetime, tahunkas=tahunkas)

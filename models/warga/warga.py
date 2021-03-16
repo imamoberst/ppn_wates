@@ -92,3 +92,7 @@ class Warga:
             return False
         user.last_login_app()
         return user
+
+    def aktivasi_warga(self):
+        self.aktif = True
+        Database.update_one_data(Warga.collection, {"_id": self._id}, {"aktif": self.aktif})
