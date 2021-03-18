@@ -58,8 +58,8 @@
                     <label for="catatanpetugas">Catatan</label>
                     <textarea class="form-control" id="catatanpetugas" rows="3" name="catatanpetugas"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">OK</button>
-                <button type="submit" class="btn btn-danger">Tidak OK</button>
+                <button type="submit" class="btn btn-primary" id="buttonok">OK</button>
+                <button type="button" class="btn btn-danger">Tidak OK</button>
 
                 <a href="{{ url_for('verifikasi_view.iuranbulanan') }}" class="btn btn-secondary">Back</a>
             </form>
@@ -71,14 +71,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="buktitransferLabel">Bukti Transfer {{ data.norumah }}</h5>
+                    <h5 class="modal-title" id="buktitransferLabel">Bukti
+                        Transfer {{ data.norumah }} {{ data.bulan }} {{ data.tahun }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="{{ url_for('static',filename='upload/bukti_bayar_iuran/' + data.bukti_bayar_iuran) }}"
-                         alt="{{ data.bukti_bayar_iuran }}" width="455" height="300">
+                    <img src="{{ url_for('static',filename='upload/bukti_bayar_iuran/' + data.bukti_bayar) }}"
+                         alt="{{ data.bukti_bayar }}" width="455" height="300">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -87,4 +88,10 @@
         </div>
     </div>
     <!-- End Modal -->
+{% endblock %}
+{% block script %}
+    <script>
+        const okButton = document.querySelector('#buttonok')
+        okButton.addEventListener('click', () => console.log('ok'))
+    </script>
 {% endblock %}

@@ -76,7 +76,7 @@ class DataBulanan:
 
     def json(self):
         return {"bulan": self.bulan, "tanggal_bayar": self.tanggal_bayar,
-                "nama_rekening": self.nama_rekening, "bukti_bayar_iuran": self.bukti_bayar,
+                "nama_rekening": self.nama_rekening, "bukti_bayar": self.bukti_bayar,
                 "verifikasi_oleh": self.verifikasi_oleh, "tanggal_verifikasi": self.tanggal_verifikasi,
                 "status": self.status, "catatan": self.catatan}
 
@@ -96,6 +96,6 @@ class KasBulanan:
 
     def json(self):
         return {"bulan": self.bulan, "tanggal_bayar": self.tanggal_bayar,
-                "nama_rekening": self.nama_rekening, "bukti_bayar_iuran": self.bukti_bayar,
+                "nama_rekening": self.nama_rekening, "bukti_bayar": self.bukti_bayar,
                 "verifikasi_oleh": self.verifikasi_oleh, "tanggal_verifikasi": self.tanggal_verifikasi,
                 "status": self.status, "catatan": self.catatan}

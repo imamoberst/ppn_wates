@@ -12,6 +12,11 @@
 {% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">Verifikasi Iuran Bulanan</h1>
+    {% if message %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">List Pembayaran Bulanan Warga Yang Belum Di Konfirmasi</h6>
@@ -44,6 +49,13 @@
                         </td>
                     </tr>
                 {% endfor %}
+                {% if data|length == 0 %}
+                    <tr>
+                        <td colspan="6">
+                            <h2> Semua Iuran Sudah Confirmed</h2>
+                        </td>
+                    </tr>
+                {% endif %}
                 </tbody>
             </table>
         </div>

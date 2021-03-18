@@ -11,10 +11,14 @@
             text-align: center;
         }
     </style>
+    <script>
+        let dataiuransemuanya = '{{ data|tojson|safe }}'
+        let tahunreport = '{{ tahunreport }}'
+    </script>
 {% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">Report</h1>
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 test">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Report Iuran Bulanan</h6>
         </div>
@@ -22,9 +26,6 @@
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <select id="blokppn" class="form-control" name="blokppn" required>
-                        {% if data %}
-                            <option value="{{ data.blokppn }}" selected>{{ data.blokppn }}</option>
-                        {% endif %}
                         <option value="">Blok Rumah</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
@@ -44,7 +45,7 @@
                            name="datepickeryear" required>
                 </div>
             </div>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered table-responsive">
                 <thead>
                 <tr>
                     <th scope="col">No Rumah</th>
@@ -63,68 +64,72 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>E5 - Imam Taufik</td>
-                    <td style="text-align: center;">
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
+                {% for d in data %}
+                    <tr id="{{ d.norumah }}" class="trIuran">
+                        <td>{{ d.norumah }}</td>
+                        <td id="januari">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-januari">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="febuari">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-febuari">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="maret">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-maret">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="april">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-april">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="mei">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-mei">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="juni">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-juni">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="juli">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-juli">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="agustus">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-agustus">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="september">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-september">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="oktober">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-oktober">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="november">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-november">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="desember">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle iuran-{{ d.norumah }}-desember">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -157,7 +162,7 @@
                            name="datepickeryearkas" required>
                 </div>
             </div>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered table-responsive">
                 <thead>
                 <tr>
                     <th scope="col">No Rumah</th>
@@ -176,68 +181,71 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>E5 - Imam Taufik</td>
-                    <td style="text-align: center;">
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-success btn-circle">
-                            <i class="fas fa-check"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger btn-circle">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </td>
+                {% for d in data %}
+                    <tr class="trKas">
+                        <td>{{ d.norumah }}</td>
+                        <td id="januari">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-januari">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="febuari">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-febuari">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="maret">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-maret">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="april">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-april">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="mei">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-mei">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="juni">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-juni">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="juli">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-juli">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="agustus">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-agustus">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="september">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-september">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="oktober">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-oktober">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="november">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-november">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                        <td id="desember">
+                            <a href="#" class="btn btn-sm btn-danger btn-circle kas-{{ d.norumah }}-desember">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -255,8 +263,8 @@
                 minViewMode: "years",
                 autoclose: true
             }).on('changeDate', function (ev) {
-                //my work herec
-                console.log('tahun di klik')
+                tahundata = document.getElementById('datepickeryear').value
+                window.location = `${window.origin}/report?tahun=${tahundata.replace(/\s+/g, '')}`
             });
         });
         $(function () {
@@ -267,8 +275,8 @@
                 minViewMode: "years",
                 autoclose: true
             }).on('changeDate', function (ev) {
-                //my work herec
-                console.log('tahun di klik')
+                tahundata = document.getElementById('datepickeryearkas').value
+                window.location = `${window.origin}/report?tahun=${tahundata.replace(/\s+/g, '')}`
             });
         });
     </script>

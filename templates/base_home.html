@@ -86,9 +86,17 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('report_view.home_report') }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#report"
+               aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fa fa-file"></i>
-                <span>Report</span></a>
+                <span>Report</span>
+            </a>
+            <div id="report" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ url_for('report_view.home_report') }}">Iuran Warga</a>
+                    <a class="collapse-item" href="{{ url_for('report_view.home_report') }}">Log Verifikasi</a>
+                </div>
+            </div>
         </li>
         <hr class="sidebar-divider">
         <!-- Nav Item - Pages Collapse Menu -->

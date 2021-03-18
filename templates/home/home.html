@@ -16,7 +16,8 @@
     <h1 class="h3 mb-4 text-gray-800">Informasi </h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Iuran Bulanan {{ session.norumah }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran Iuran Bulanan {{ session.norumah }}
+            </h6>
             {% if message %}
                 <div class="alert alert-success" role="alert">
                     Terima Kasih Atas Pembayaran Anda, Pembayaran Akan di Verifikasi Oleh Petugas Terkait
@@ -32,7 +33,7 @@
                     <input type="hidden" class="form-control dataiuran" value="{{ dataiuran }}">
                 </div>
             </div>
-            <table class="table table-sm table-bordered table-responsive">
+            <table class="table table-sm table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Januari</th>
@@ -126,6 +127,18 @@
                 </tr>
                 </tbody>
             </table>
+            <hr>
+            <div class="mt-2">
+                <a class="btn btn-sm btn-danger btn-circle">
+                    <i class="fas fa-times"></i>
+                </a> Belum Bayar
+                <a class="btn btn-sm btn-warning btn-circle">
+                    <i class="fas fa-exclamation"></i>
+                </a> Verifikasi
+                <a class="btn btn-sm btn-success btn-circle">
+                    <i class="fas fa-check"></i>
+                </a> Lunas
+            </div>
         </div>
     </div>
 
@@ -142,7 +155,7 @@
                     <input type="hidden" class="form-control datakas" value="{{ datakas }}">
                 </div>
             </div>
-            <table class="table table-sm table-bordered table-responsive">
+            <table class="table table-sm table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Januari</th>
@@ -234,6 +247,18 @@
                 </td>
                 </tbody>
             </table>
+            <hr>
+            <div class="mt-2">
+                <a class="btn btn-sm btn-danger btn-circle">
+                    <i class="fas fa-times"></i>
+                </a> Belum Bayar
+                <a class="btn btn-sm btn-warning btn-circle">
+                    <i class="fas fa-exclamation"></i>
+                </a> Verifikasi
+                <a class="btn btn-sm btn-success btn-circle">
+                    <i class="fas fa-check"></i>
+                </a> Lunas
+            </div>
         </div>
     </div>
 {% endblock %}

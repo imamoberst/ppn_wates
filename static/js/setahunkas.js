@@ -16,61 +16,109 @@ datakas.forEach(function (d) {
         centangJankas.removeAttribute('href')
         centangJankas.classList.replace('btn-danger', 'btn-success')
         centangJankas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangJankas.classList.replace('btn-success', 'btn-warning')
+            centangJankas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('febuari' === d.bulan) {
         centangFebkas.removeAttribute('href')
         centangFebkas.classList.replace('btn-danger', 'btn-success')
         centangFebkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangFebkas.classList.replace('btn-success', 'btn-warning')
+            centangFebkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('maret' === d.bulan) {
         centangMarkas.removeAttribute('href')
         centangMarkas.classList.replace('btn-danger', 'btn-success')
         centangMarkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangMarkas.classList.replace('btn-success', 'btn-warning')
+            centangMarkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('april' === d.bulan) {
         centangAprkas.removeAttribute('href')
         centangAprkas.classList.replace('btn-danger', 'btn-success')
         centangAprkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangAprkas.classList.replace('btn-success', 'btn-warning')
+            centangAprkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('mei' === d.bulan) {
         centangMeikas.removeAttribute('href')
         centangMeikas.classList.replace('btn-danger', 'btn-success')
         centangMeikas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangMeikas.classList.replace('btn-success', 'btn-warning')
+            centangMeikas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('juni' === d.bulan) {
         centangJunkas.removeAttribute('href')
         centangJunkas.classList.replace('btn-danger', 'btn-success')
         centangJunkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangJunkas.classList.replace('btn-success', 'btn-warning')
+            centangJunkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('juli' === d.bulan) {
         centangJulkas.removeAttribute('href')
         centangJulkas.classList.replace('btn-danger', 'btn-success')
         centangJulkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangJulkas.classList.replace('btn-success', 'btn-warning')
+            centangJulkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('agustus' === d.bulan) {
         centangAugkas.removeAttribute('href')
         centangAugkas.classList.replace('btn-danger', 'btn-success')
         centangAugkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangAugkas.classList.replace('btn-success', 'btn-warning')
+            centangAugkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('september' === d.bulan) {
         centangSepkas.removeAttribute('href')
         centangSepkas.classList.replace('btn-danger', 'btn-success')
         centangSepkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangSepkas.classList.replace('btn-success', 'btn-warning')
+            centangSepkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('oktober' === d.bulan) {
         centangOctkas.removeAttribute('href')
         centangOctkas.classList.replace('btn-danger', 'btn-success')
         centangOctkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangOctkas.classList.replace('btn-success', 'btn-warning')
+            centangOctkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('november' === d.bulan) {
         centangNovkas.removeAttribute('href')
         centangNovkas.classList.replace('btn-danger', 'btn-success')
         centangNovkas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangNovkas.classList.replace('btn-success', 'btn-warning')
+            centangNovkas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
     if ('desember' === d.bulan) {
         centangDeskas.removeAttribute('href')
         centangDeskas.classList.replace('btn-danger', 'btn-success')
         centangDeskas.firstElementChild.classList.replace('fa-times', 'fa-check')
+        if ('verifikasi' === d.status) {
+            centangDeskas.classList.replace('btn-success', 'btn-warning')
+            centangDeskas.firstElementChild.classList.replace('fa-check', 'fa-exclamation')
+        }
     }
 })
 

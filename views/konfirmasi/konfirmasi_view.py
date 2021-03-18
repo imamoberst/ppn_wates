@@ -39,12 +39,14 @@ def iuran_bulanan():
                     tahun_obj = Tahun(tahunbayar)
                     for bulan in databulan:
                         iuran_bulanan_obj = DataBulanan(bulan, catatan, tanggalbayar, namapembayar, filename)
+                        iuran_bulanan_obj.status = 'verifikasi'
                         tahun_obj.iuranbulanan.append(iuran_bulanan_obj.json())
                     iuran_obj.iuran.append(tahun_obj.json())
                     iuran_obj.update_db()
                 else:
                     for bulan in databulan:
                         iuran_bulanan_obj = DataBulanan(bulan, catatan, tanggalbayar, namapembayar, filename)
+                        iuran_bulanan_obj.status = 'verifikasi'
                         tahun_fromdb[0]['iuranbulanan'].append(iuran_bulanan_obj.json())
                     iuran_obj.update_db()
 
@@ -55,6 +57,7 @@ def iuran_bulanan():
                 dataiuranbulanan = [DataBulanan(d, catatan, tanggalbayar, namapembayar, filename).json() for d in
                                     databulan]
                 for iuranbulan in dataiuranbulanan:
+                    iuranbulan['status'] = 'verifikasi'
                     tahun_obj.iuranbulanan.append(iuranbulan)
                 tahuniuran_obj.iuran.append(tahun_obj.json())
 
@@ -115,16 +118,32 @@ def iurankas():
                     tahun_obj = Tahun(tahunbayar)
                     for bulan in databulan:
                         iuran_kas_obj = KasBulanan(bulan, catatan, tanggalbayar, namapembayar, filename)
+                        iuran_kas_obj.status = 'verifikasi'
                         tahun_obj.iurankas.append(iuran_kas_obj.json())
                     iuran_obj.iuran.append(tahun_obj.json())
                     iuran_obj.update_db()
                 else:
                     for bulan in databulan:
                         iuran_kas_obj = KasBulanan(bulan, catatan, tanggalbayar, namapembayar, filename)
+                        iuran_kas_obj.status = 'verifikasi'
                         tahun_fromdb[0]['iurankas'].append(iuran_kas_obj.json())
                     iuran_obj.update_db()
 
                 return redirect(url_for('home_view.home_warga', success="success"))
+
+            else:  # JIKA TIDAK ADA IURAN
+                tahuniuran_obj = TahunIuran(idwarga, norumah)
+                tahun_obj = Tahun(tahunbayar)
+                dataiurankas = [KasBulanan(d, catatan, tanggalbayar, namapembayar, filename).json() for d in
+                                databulan]
+                for iurankas in dataiurankas:
+                    iurankas['status'] = 'verifikasi'
+                    tahun_obj.iurankas.append(iurankas)
+                tahuniuran_obj.iuran.append(tahun_obj.json())
+
+                tahuniuran_obj.save_to_db()
+
+                return redirect(url_for('home_view.home_warga', success="success!"))
     ##END POST
     ##START GET
 
