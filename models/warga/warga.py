@@ -96,3 +96,7 @@ class Warga:
     def aktivasi_warga(self):
         self.aktif = True
         Database.update_one_data(Warga.collection, {"_id": self._id}, {"aktif": self.aktif})
+
+    @classmethod
+    def find_all(cls):
+        return [cls(**data) for data in Database.find(cls.collection, {})]

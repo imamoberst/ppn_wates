@@ -19,6 +19,10 @@ dataIuranFilter.forEach(function (e) {
     if (aData) {
         aData.classList.replace('btn-danger', 'btn-success')
         aData.querySelector("i").classList.replace('fa-times', 'fa-check')
+        if (e.status === 'verifikasi') {
+            aData.classList.replace('btn-success', 'btn-warning')
+            aData.querySelector("i").classList.replace('fa-check', 'fa-exclamation')
+        }
     }
 })
 
@@ -27,6 +31,10 @@ dataKasFilter.forEach(function (e) {
     if (aKas) {
         aKas.classList.replace('btn-danger', 'btn-success')
         aKas.querySelector("i").classList.replace('fa-times', 'fa-check')
+        if (e.status === 'verifikasi') {
+            aKas.classList.replace('btn-success', 'btn-warning')
+            aKas.querySelector("i").classList.replace('fa-check', 'fa-exclamation')
+        }
     }
 })
 

@@ -93,10 +93,17 @@
             </a>
             <div id="report" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ url_for('report_view.warga_report') }}">Warga PPN</a>
                     <a class="collapse-item" href="{{ url_for('report_view.home_report') }}">Iuran Warga</a>
-                    <a class="collapse-item" href="{{ url_for('report_view.home_report') }}">Log Verifikasi</a>
+                    <a class="collapse-item" href="{{ url_for('report_view.verifikasi') }}">Log Verifikasi</a>
                 </div>
             </div>
+        </li>
+        <hr class="sidebar-divider">
+        <li class="nav-item collapsed">
+            <a class="nav-link" href="{{ url_for('user_view.user') }}">
+                <i class="far fa-user"></i>
+                <span>User</span></a>
         </li>
         <hr class="sidebar-divider">
         <!-- Nav Item - Pages Collapse Menu -->

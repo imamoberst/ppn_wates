@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request
 from models.iuran_bulanan.iuran_bulanan import TahunIuran
 from datetime import datetime
 import json
+from models.warga.warga import Warga
 
 report_view = Blueprint('report_view', __name__)
 
@@ -17,3 +18,15 @@ def home_report():
     except:
         tahun = str(datetime.now().year)
     return render_template('report/report.html', data=datasemuaiuran, tahunreport=tahun)
+
+
+@report_view.route('/warga')
+def warga_report():
+    warga_all_obj = Warga.find_all()
+  
+    return render_template('report/warga.html', data=warga_all_obj)
+
+
+@report_view.route('/verifikasi')
+def verifikasi():
+    return render_template('report/verifikasi.html')

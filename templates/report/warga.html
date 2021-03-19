@@ -1,0 +1,96 @@
+{% extends 'base_home.html' %}
+{% block head %}
+    <link href="{{ url_for('static',filename='css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1 class="h3 mb-4 text-gray-800">Report</h1>
+    <div class="card shadow mb-4 test">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Report Warga PPN</h6>
+        </div>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <select id="blokppn" class="form-control" name="blokppn" required>
+                        <option value="">Blok Rumah</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="J">J</option>
+                        <option value="K">K</option>
+                    </select>
+                </div>
+
+            </div>
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th scope="col">No Rumah</th>
+                    <th scope="col">Nama Penghuni</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for d in range(data|length) %}
+                    <tr>
+                        <td>{{ d + 1 }}</td>
+                        <td>{{ data[d].blok_ppn }}{{ data[d].no_ppn }}</td>
+                        <td>{{ data[d].nama_depan }}{{ data[d].nama_belakang }}</td>
+                        <td>Delete</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block script %}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".datepickeryear").datepicker({
+                format: " yyyy",
+                orientation: 'bottom',
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            }).on('changeDate', function (ev) {
+                tahundata = document.getElementById('datepickeryear').value
+                window.location = `${window.origin}/report?tahun=${tahundata.replace(/\s+/g, '')}`
+            });
+        });
+        $(function () {
+            $(".datepickeryearkas").datepicker({
+                format: " yyyy",
+                orientation: 'bottom',
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            }).on('changeDate', function (ev) {
+                tahundata = document.getElementById('datepickeryearkas').value
+                window.location = `${window.origin}/report?tahun=${tahundata.replace(/\s+/g, '')}`
+            });
+        });
+    </script>
+{% endblock %}
