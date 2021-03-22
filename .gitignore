@@ -13,5 +13,6 @@ views/report/__pycache__/
 models/iuran_bulanan/__pycache__/
 static/upload/
 views/login/__pycache__/
+uwsgi.ini
 
 
