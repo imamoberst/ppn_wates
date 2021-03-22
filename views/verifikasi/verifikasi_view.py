@@ -64,7 +64,7 @@ def iuranbulanan_details():
         for d in data:
             for tahun in d.iuran:
                 for iuranbulan in tahun['iuranbulanan']:
-                    if iuranbulan['status'] == 'belum_bayar':
+                    if iuranbulan['status'] == 'verifikasi':
                         dataiuran.append(
                             {**iuranbulan, "norumah": d.norumah, "tahun": tahun['tahun'], "idwarga": d.idwarga})
         return render_template('verifikasi/iuranbulanan.html',
