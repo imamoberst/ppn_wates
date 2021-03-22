@@ -68,44 +68,47 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#verifikasi"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-user-check"></i>
-                <span>Verifikasi</span>
-            </a>
-            <div id="verifikasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ url_for('verifikasi_view.iuranbulanan') }}">Iuran Bulanan</a>
-                    <a class="collapse-item" href="{{ url_for('verifikasi_view.iurankas') }}">Iuran Kas</a>
-                    <a class="collapse-item" href="{{ url_for('verifikasi_view.wargabaru') }}">Warga Baru</a>
+        {% if session.level == 'bendahara' %}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#verifikasi"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-user-check"></i>
+                    <span>Verifikasi</span>
+                </a>
+                <div id="verifikasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ url_for('verifikasi_view.iuranbulanan') }}">Iuran Bulanan</a>
+                        <a class="collapse-item" href="{{ url_for('verifikasi_view.iurankas') }}">Iuran Kas</a>
+                        <a class="collapse-item" href="{{ url_for('verifikasi_view.wargabaru') }}">Warga Baru</a>
+                    </div>
                 </div>
-            </div>
-        </li>
-
+            </li>
+        {% endif %}
         <!-- Divider -->
         <hr class="sidebar-divider">
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#report"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fa fa-file"></i>
-                <span>Report</span>
-            </a>
-            <div id="report" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ url_for('report_view.warga_report') }}">Warga PPN</a>
-                    <a class="collapse-item" href="{{ url_for('report_view.home_report') }}">Iuran Warga</a>
-                    <a class="collapse-item" href="{{ url_for('report_view.verifikasi') }}">Log Verifikasi</a>
+        {% if session.level == 'bendahara' %}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#report"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa fa-file"></i>
+                    <span>Report</span>
+                </a>
+                <div id="report" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ url_for('report_view.warga_report') }}">Warga PPN</a>
+                        <a class="collapse-item" href="{{ url_for('report_view.home_report') }}">Iuran Warga</a>
+                        <a class="collapse-item" href="{{ url_for('report_view.verifikasi') }}">Log Verifikasi</a>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <hr class="sidebar-divider">
-        <li class="nav-item collapsed">
-            <a class="nav-link" href="{{ url_for('user_view.user') }}">
-                <i class="far fa-user"></i>
-                <span>User</span></a>
-        </li>
-        <hr class="sidebar-divider">
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item collapsed">
+                <a class="nav-link" href="{{ url_for('user_view.user') }}">
+                    <i class="far fa-user"></i>
+                    <span>User</span></a>
+            </li>
+            <hr class="sidebar-divider">
+        {% endif %}
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">

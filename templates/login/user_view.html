@@ -1,4 +1,15 @@
 {% extends 'base_home.html' %}
+{% block head %}
+    <style type="text/css">
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <h1 class="h3 mb-4 text-gray-800">User</h1>
     <div class="card shadow mb-4 test">
@@ -6,6 +17,84 @@
             <h6 class="m-0 font-weight-bold text-primary">View All Users</h6>
         </div>
         <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for d in data %}
+                    <tr>
+                        <td>{{ d.blok_ppn }}{{ d.no_ppn }}</td>
+                        <td>{{ d.nama_depan }}{{ d.nama_belakang }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#levelModal"
+                                    data-idwarga="{{ d._id }}">Change Level
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="levelModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="levelModalLabel">Changes Level</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input class="form-control inputinput" type="hidden">
+                        <div class="form-group">
+                            <label for="level">Level :</label>
+                            <select id="level" name="level" class="form-control">
+                                <option value="warga">Warga</option>
+                                <option value="bendahara">Bendahara</option>
+                                <option value="rt">RT</option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- EndModal -->
+{% endblock %}
+{% block script %}
+    <script>
+        const modalLevel = $('#levelModal')
+        modalLevel.on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('idwarga') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.inputinput').val(recipient)
+        })
+    </script>
+    <script>
+        const bModalSave = document.getElementById("save")
+        const optionLevel = document.getElementById("level")
+        const inputModalId = document.querySelector(".inputinput")
+        bModalSave.addEventListener('click', function () {
+            window.location = `${window.origin}/userview/level?idwarga=${inputModalId.value}&level=${optionLevel.value}`
+            modalLevel.modal('hide')
+        })
+    </script>
 {% endblock %}
