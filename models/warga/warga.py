@@ -11,7 +11,7 @@ class Warga:
                  tanggal_lahir, no_hp, agama, pekerjaan, password, jumlah_penghuni,
                  rincian_penghuni=None,
                  _id=None,
-                 aktif=None, level=None, tanggal_daftar=None, last_login=None):
+                 aktif=None, level=None, tanggal_daftar=None, last_login=None, ganti_password=None):
         self.nama_depan = nama_depan
         self.nama_belakang = nama_belakang
         self.nik = nik
@@ -32,6 +32,7 @@ class Warga:
         self.aktif = aktif or False
         self.tanggal_daftar = tanggal_daftar or ''
         self.last_login = last_login or ''
+        self.ganti_password = ganti_password or ''
 
     def json(self):
         return {"nama_depan": self.nama_depan, "nama_belakang": self.nama_belakang, "nik": self.nik,
@@ -40,7 +41,7 @@ class Warga:
                 "agama": self.agama, "pekerjaan": self.pekerjaan, "password": self.password,
                 "jumlah_penghuni": self.jumlah_penghuni, "rincian_penghuni": self.rincian_penghuni, "_id": self._id,
                 "aktif": self.aktif, "level": self.level, "tanggal_daftar": self.tanggal_daftar,
-                "last_login": self.last_login}
+                "last_login": self.last_login, "ganti_password": self.ganti_password}
 
     def save_one_to_db(self):
         Database.insert_one(Warga.collection, self.json())
@@ -77,6 +78,16 @@ class Warga:
     def hash_password(self):
         self.password = Utlis.hash_password(self.password)
 
+    def hash_new_password(self):
+        self.ganti_password = Utlis.hash_password(self.ganti_password)
+
+    def update_add_new_password(self):
+        Database.update_one_data(Warga.collection, {"_id": self._id}, {"ganti_password": self.ganti_password})
+
+    def update_konfirm_new_password(self):
+        Database.update_one_data(Warga.collection, {"_id": self._id},
+                                 {"ganti_password": self.ganti_password, "password": self.password})
+
     def tanggal_awal_daftar(self):
         self.tanggal_daftar = datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -104,3 +115,7 @@ class Warga:
     @classmethod
     def find_all(cls):
         return [cls(**data) for data in Database.find(cls.collection, {})]
+
+    @classmethod
+    def find_all_ganti_password(cls):
+        return [cls(**data) for data in Database.find(cls.collection, {}) if cls(**data).ganti_password != '']

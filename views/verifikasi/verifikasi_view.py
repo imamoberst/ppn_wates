@@ -118,3 +118,19 @@ def warga_details():
             url_for('.wargabaru',
                     success=f'Selamat Datang Warga Baru {warga_obj.blok_ppn}{warga_obj.no_ppn} - {warga_obj.nama_depan} {warga_obj.nama_belakang}'))
     return render_template('verifikasi/wargadetails.html', data=warga_obj)
+
+
+@verifikasi_view.route('/warga_ganti_password')
+def warga_ganti_password():
+    try:
+        if request.args['idwarga']:
+            warga_obj = Warga.find_one_warga_by_id(request.args['idwarga'])
+            warga_obj.password = warga_obj.ganti_password
+            warga_obj.ganti_password = ''
+            warga_obj.update_konfirm_new_password()
+            data = Warga.find_all_ganti_password()
+            return render_template('verifikasi/warga_ganti_password.html', data=data)
+    except:
+        _idwarga = 'idwarga'
+    data = Warga.find_all_ganti_password()
+    return render_template('verifikasi/warga_ganti_password.html', data=data)

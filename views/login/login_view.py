@@ -72,3 +72,19 @@ def user_profile():
         return render_template('login/user_profile.html', data=warga_obj.json())
     except:
         return redirect(url_for('home_view.home_warga'))
+
+
+@login_view.route('/lupa_password', methods=['POST', 'GET'])
+def lupa_password():
+    if request.method == 'POST':
+        warga_obj = Warga.find_one_warga_by_blok(request.form['blokrumah'].upper())
+        if warga_obj:
+            warga_obj.ganti_password = request.form['password']
+            warga_obj.hash_new_password()
+            warga_obj.update_add_new_password()
+            # print(warga_obj.ganti_password)
+            return render_template('login/lupa_password.html',
+                                   success="Silahkan Hubungi Petugas Untuk Konfirmasi Ganti Password")
+        else:
+            return render_template('login/lupa_password.html', error="Warga Tidak Di Temukan")
+    return render_template('login/lupa_password.html')
